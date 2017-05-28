@@ -39,7 +39,7 @@ public class AuthFilter implements Filter {
         catch(Throwable t) {
             System.out.println( t.getMessage());
         }
-    } //doFilter
+    } //doFilters
 
     @Override
     public void destroy() {
