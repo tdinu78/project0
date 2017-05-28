@@ -7,8 +7,8 @@ public class Database {
 
     public static Connection getConnection() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/project0",
+            Class.forName("org.h2.jdbcx.JdbcDataSource");
+            Connection con = DriverManager.getConnection("jdbc:h2:~/project0",
                     "admin", "admin");
             return con;
         } catch (Exception ex) {
