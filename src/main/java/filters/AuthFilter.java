@@ -36,10 +36,10 @@ public class AuthFilter implements Filter {
                     || reqURI.indexOf("/public/") >= 0 || reqURI.contains("javax.faces.resource") )
                 chain.doFilter(request, response);
         }
-        catch(Throwable t) {
-            System.out.println( t.getMessage());
+        catch(Throwable x) {
+            System.out.println( x.getMessage());
         }
-    } //doFilter
+    } //doFilters2
 
     @Override
     public void destroy() {
