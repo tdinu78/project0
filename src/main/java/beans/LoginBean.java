@@ -1,6 +1,9 @@
 package beans;
 
+import dao.Database;
 import dao.UserDAO;
+import utils.DatabaseInit;
+
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -8,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import utils.DatabaseInit;
 
 
 @Named
@@ -47,6 +51,8 @@ public class LoginBean implements Serializable {
     }
 
     public String loginProject() {
+        DatabaseInit a = new DatabaseInit();
+        a.createTables();
         boolean result = UserDAO.login(uname, password);
         if (result) {
             // get Http Session and store username
