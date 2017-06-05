@@ -1,5 +1,7 @@
 package utils;
 import java.sql.*;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Created by tdinu on 02-Jun-17.
@@ -17,21 +19,24 @@ public class DatabaseInit {
         Connection conn = null;
         Statement stmt = null;
         try {
-            //STEP 2: Register JDBC driver
             Class.forName("org.h2.jdbcx.JdbcDataSource");
-
-            //STEP 3: Open a connection
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            //STEP 4: Execute a query
             stmt = conn.createStatement();
-            String sql = "IF NOT EXISTS (SELECT * FROM " + DB_NAME +
-                    "WHERE NAME = 'userinfo')" + "CREATE TABLE userinfo " +
-                    "(id INTEGER not NULL, " + " first VARCHAR(255), " +
-                    " last VARCHAR(255), " + " age INTEGER, " +
-                    " email VARCHAR(255), " + " created_date DATE NOT NULL, " +
-                    " PRIMARY KEY ( id ))";
-
+//Create table userinfo and initiate admin admin user
+            String sql = "CREATE TABLE IF NOT EXISTS PUBLIC.userinfo"  +
+                    "(user VARCHAR(20) not NULL, pass VARCHAR(20) not NULL, " +
+                    " first VARCHAR(20), last VARCHAR(20), " + " age INTEGER, " +
+                    " email VARCHAR(50) NOT NULL, " + " created_date DATE NOT NULL, " +
+                    " PRIMARY KEY ( user ))";
             stmt.executeUpdate(sql);
+            String sql2 = "SELECT * FROM userinfo";
+             int x = stmt.executeUpdate(sql);
+             if(x==0) {
+                 java.sql.Date today = new java.sql.Date(new Date().getTime());
+                 String sql3 = "INSERT INTO PUBLIC.USERINFO (USER, PASS, EMAIL, CREATED_DATE) VALUES ('admin', 'admin', 'admin@admin.ro', today)";
+                 stmt.executeUpdate(sql3);
+             }
+
         } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
