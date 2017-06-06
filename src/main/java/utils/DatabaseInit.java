@@ -29,10 +29,11 @@ public class DatabaseInit {
                     " email VARCHAR(50) NOT NULL, " + " created_date DATE NOT NULL, " +
                     " PRIMARY KEY ( user ))";
             stmt.executeUpdate(sql);
-            String sql2 = "SELECT * FROM userinfo";
-             int x = stmt.executeUpdate(sql);
-             if(x==0) {
-                 java.sql.Date today = new java.sql.Date(new Date().getTime());
+            String sql2 = "SELECT * FROM PUBLIC.userinfo";
+             ResultSet x = stmt.executeQuery(sql2);
+             if(x.absolute(1)!=true)
+                {
+                java.sql.Date today = new java.sql.Date(new Date().getTime());
                  String sql3 = "INSERT INTO PUBLIC.USERINFO (USER, PASS, EMAIL, CREATED_DATE) VALUES ('admin', 'admin', 'admin@admin.ro', today)";
                  stmt.executeUpdate(sql3);
              }
