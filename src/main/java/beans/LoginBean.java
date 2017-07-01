@@ -16,7 +16,7 @@ import utils.DatabaseInit;
 
 @Named
 @SessionScoped
-/**
+/*
  *
  * @author User
  */
@@ -59,7 +59,7 @@ public class LoginBean implements Serializable {
             HttpSession session = Util.getSession();
             session.setAttribute("username", uname);
 
-            return "home";
+            return "/protected/home";
         } else {
 
             FacesContext.getCurrentInstance().addMessage(
@@ -71,13 +71,13 @@ public class LoginBean implements Serializable {
             // invalidate session, and redirect to other pages
 
             //message = "Invalid Login. Please Try Again!";
-            return "login";
+            return "/public/login";
         }
     }
 
     public String logout() {
         HttpSession session = Util.getSession();
         session.invalidate();
-        return "login";
+        return "/index";
     }
 }
