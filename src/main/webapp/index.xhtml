@@ -5,11 +5,15 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>My First Application</title>
+        <title>==Chat Application==</title>
     </h:head>
     <h:body>
         <h:form>
-           <p:commandButton value="Login" action="/public/login" ajax="false"/>
+            <h:panelGrid columns="4"/>
+            <h:button image = "/resources/img/logo.gif"/>
+            <h:link value="How it works"/>
+            <h:link value="About us"/>
+           <h:commandButton value="Login" action="/public/login" ajax="false"/>
         </h:form>
     </h:body>
 </html>
