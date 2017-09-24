@@ -10,19 +10,24 @@
     <ui:composition>
         <h:outputStylesheet library="css" name="style.css"/>
         <div class="ui-fluid" style="text-align: center">
-            <p:panelGrid columns="5" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
-                <p:outputLabel value="Search"/>
-                <p:outputLabel value="Message"/>
-                <p:outputLabel value="Like"/>
+            <p:panelGrid columns="6" columnClasses="ui-grid-col-8, ui-grid-col-8, ui-grid-col-8, ui-grid-col-2, ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:outputLabel value="Logo"/>
+                <p:outputLabel value="#{msg['messages']}"/>
+                <p:outputLabel value="#{msg['like']}"/>
                 <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
                     <p:graphicImage class="fa fa-fw fa-lock">
                     </p:graphicImage>
-                    <h:outputText value="#{msg['Login']}"/>
+                    <h:outputText value="#{msg['login']}"/>
                 </p:commandLink>
                 <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
                     <p:graphicImage class="fa fa-fw fa-pencil">
                     </p:graphicImage>
-                    <h:outputText value="#{msg['Join']}"/>
+                    <h:outputText value="#{msg['join']}"/>
+                </p:commandLink>
+                <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
+                    <p:graphicImage class="fa fa-fw fa-pencil">
+                    </p:graphicImage>
+                    <h:outputText value="#{msg['join']}"/>
                 </p:commandLink>
             </p:panelGrid>
         </div>
