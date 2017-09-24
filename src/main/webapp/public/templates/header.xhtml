@@ -8,18 +8,22 @@
       xmlns:p="http://primefaces.org/ui">
 <body>
     <ui:composition>
-        <h:outputStylesheet name="css/style.css" />
+        <h:outputStylesheet library="css" name="style.css"/>
         <div class="ui-fluid" style="text-align: center">
-            <p:panelGrid columns="5" columnClasses="ui-grid-col-5, ui-grid-col-5, ui-grid-col-5, ui-grid-col-5, ui-grid-col-5" layout="grid" styleClass="ui-panelgrid-blank">
-                <p:outputLabel value="Input"/>
-                <p:outputLabel value="Input"/>
-                <p:outputLabel value="Input"/>
-                <p:commandLink action="#{loginBean.loginProject}" style="text-decoration: none;">
+            <p:panelGrid columns="5" columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:outputLabel value="Search"/>
+                <p:outputLabel value="Message"/>
+                <p:outputLabel value="Like"/>
+                <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
                     <p:graphicImage class="fa fa-fw fa-lock">
                     </p:graphicImage>
-                    <h:outputText value="Login"/>
+                    <h:outputText value="#{msg['Login']}"/>
                 </p:commandLink>
-                <p:outputLabel value="Input"/>
+                <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
+                    <p:graphicImage class="fa fa-fw fa-pencil">
+                    </p:graphicImage>
+                    <h:outputText value="#{msg['Join']}"/>
+                </p:commandLink>
             </p:panelGrid>
         </div>
     </ui:composition>
