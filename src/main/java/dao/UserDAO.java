@@ -1,33 +1,27 @@
 package dao;
 
 
+import enums.DATABASE;
+
 import java.sql.*;
 
 public class UserDAO {
     public static boolean login(String user, String password) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            con = Database.getConnection();
-            ps = con.prepareStatement(
-                    "select * from userinfo where user= ? and pass= ? ");
-            ps.setString(1, user);
-            ps.setString(2, password);
-
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) // found
-            {
-                System.out.println(rs.getString("user"));
+        String sql = "select * from userinfo where users= ? and pass= ? ";
+        try (Connection conn = DriverManager.getConnection(DATABASE.DBURL.getValue(), DATABASE.USER.getValue(), DATABASE.PASS.getValue());
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs.getString("users"));
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         } catch (Exception ex) {
             System.out.println("Error in login() -->" + ex.getMessage());
             return false;
-        } finally {
-            Database.close(con);
         }
     }
 }

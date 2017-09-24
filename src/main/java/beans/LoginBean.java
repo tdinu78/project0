@@ -1,17 +1,14 @@
 package beans;
 
-import dao.Database;
 import dao.UserDAO;
 import utils.DatabaseInit;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-import utils.DatabaseInit;
 
 
 @Named

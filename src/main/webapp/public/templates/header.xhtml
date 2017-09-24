@@ -4,8 +4,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+    <ui:composition>
+        <h:outputStylesheet name="css/style.css" />
+        <div class="ui-fluid" style="text-align: center">
+            <p:panelGrid columns="5" columnClasses="ui-grid-col-5, ui-grid-col-5, ui-grid-col-5, ui-grid-col-5, ui-grid-col-5" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:outputLabel value="Input"/>
+                <p:outputLabel value="Input"/>
+                <p:outputLabel value="Input"/>
+                <p:commandLink action="#{loginBean.loginProject}" style="text-decoration: none;">
+                    <p:graphicImage class="fa fa-fw fa-lock">
+                    </p:graphicImage>
+                    <h:outputText value="Login"/>
+                </p:commandLink>
+                <p:outputLabel value="Input"/>
+            </p:panelGrid>
+        </div>
+    </ui:composition>
+</body>
+
 </html>
