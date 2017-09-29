@@ -24,11 +24,16 @@
                     </p:graphicImage>
                     <h:outputText value="#{msg['join']}"/>
                 </p:commandLink>
-                <p:commandLink action="#{loginBean.loginProject}" styleClass="comLnk_1">
-                    <p:graphicImage class="fa fa-fw fa-pencil">
-                    </p:graphicImage>
-                    <h:outputText value="#{msg['join']}"/>
-                </p:commandLink>
+                <p:selectOneMenu id="advanced" value="#{loginBean.selLocal}" converter="themeConverter" panelStyle="width:180px"
+                                 effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+                    <f:selectItems value="#{loginBean.selLocals}" var="selLocal" itemLabel="#{selLocal.displayName}" itemValue="#{selLocal}" />
+                    <p:column style="width:10%">
+                        <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{t.displayName}" />
+                    </p:column>
+                </p:selectOneMenu>
             </p:panelGrid>
         </div>
     </ui:composition>

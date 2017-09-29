@@ -1,12 +1,14 @@
 package beans;
 
 import dao.UserDAO;
+import models.Local;
 import utils.DatabaseInit;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -46,6 +48,9 @@ public class LoginBean implements Serializable {
     public void setUname(String uname) {
         this.uname = uname;
     }
+
+    Local localen=new Local(1,"en","English");
+    Local localRo=new Local(1,"ro","Romana");
 
     public String loginProject() {
         DatabaseInit a = new DatabaseInit();
